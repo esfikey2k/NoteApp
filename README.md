@@ -1,4 +1,4 @@
-# ECZANE OTOMASYONU
+# NOTE APP
 
 **PROJE ÖZETİ:**
 
