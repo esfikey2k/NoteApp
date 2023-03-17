@@ -12,3 +12,4 @@ Uygulama açıldıktan sonra sağ alttaki + butonuna basarak not eklenir. Eklene
   - Kotlin
   - Fragment
   - ViewBinding
+  - Room
