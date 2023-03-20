@@ -5,4 +5,8 @@
     <string name="add_text">Ekle</string>
     <string name="home_text">Anasayfa</string>
     <string name="garbage_text">Çöp Kutusu</string>
+    <string name="title_text">Başlık</string>
+    <string name="type_something_text">Bir şey yaz...</string>
+    <string name="save_text">Kaydet</string>
+    <string name="note_text">Not</string>
 </resources>

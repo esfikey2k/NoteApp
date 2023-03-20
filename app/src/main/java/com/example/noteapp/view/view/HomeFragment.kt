@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.noteapp.databinding.FragmentHomeBinding
+import com.example.noteapp.view.adapter.RecyclerViewAdapter
+import com.example.noteapp.view.room.Note
+import com.example.noteapp.view.room.NoteDAO
+import com.example.noteapp.view.room.NoteDB
 
 
 class HomeFragment : Fragment() {
@@ -15,6 +20,9 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var noteDao: NoteDAO
+    private lateinit var noteArrayList: ArrayList<Note>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +38,17 @@ class HomeFragment : Fragment() {
 
         _binding!!.fab.setOnClickListener {
             val action= HomeFragmentDirections.actionHomeFragmentToAddNoteFragment()
-            println("action sonrası")
             view.findNavController().navigate(action)
-            println("controller sonrası")
         }
+
+        val noteDb = NoteDB.getInstance(requireContext())
+        noteDao= noteDb.noteDao
+
+        noteArrayList= noteDao.getAll() as ArrayList<Note>
+
+        _binding!!.recyclerView.layoutManager= LinearLayoutManager(requireContext())
+        val noteAdapter= RecyclerViewAdapter(noteArrayList)
+        _binding!!.recyclerView.adapter= noteAdapter
 
         return view
     }

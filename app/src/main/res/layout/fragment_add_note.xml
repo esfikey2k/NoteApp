@@ -7,17 +7,60 @@
     tools:context=".view.view.AddNoteFragment">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FRAGMENT ADD"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/custom_edittext"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="@string/title_text"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/editTextNote"
+        android:layout_width="0dp"
+        android:layout_height="710dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edittext"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="@string/type_something_text"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
+        tools:ignore="RtlCompat" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:contentDescription="@string/save_text"
+        app:backgroundTint="#4CAF50"
+        app:fabCustomSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/baseline_check_24"
+        app:tint="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
