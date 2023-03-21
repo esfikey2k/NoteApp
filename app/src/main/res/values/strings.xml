@@ -9,4 +9,5 @@
     <string name="type_something_text">Bir şey yaz...</string>
     <string name="save_text">Kaydet</string>
     <string name="note_text">Not</string>
+    <string name="delete_text">Sil</string>
 </resources>

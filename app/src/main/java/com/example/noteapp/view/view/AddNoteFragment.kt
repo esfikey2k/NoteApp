@@ -74,11 +74,9 @@ class AddNoteFragment : Fragment() {
                     view.findNavController().navigate(action)
                 }
 
-
             }
 
         }
-
 
         return view
     }

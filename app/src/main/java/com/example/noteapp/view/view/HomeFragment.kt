@@ -54,6 +54,8 @@ class HomeFragment : Fragment() {
         val noteAdapter= RecyclerViewAdapter(noteArrayList)
         _binding!!.recyclerView.adapter= noteAdapter
 
+
+
         return view
     }
 
