@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
 
         _binding!!.fab.setOnClickListener {
 
-            setFragmentResult("fromWhere", bundleOf("where" to "HomeFragment"))
+            setFragmentResult("noteInformation", bundleOf("where" to "HomeFragment"))
             val action= HomeFragmentDirections.actionHomeFragmentToAddNoteFragment()
             view.findNavController().navigate(action)
         }

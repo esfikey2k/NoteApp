@@ -41,51 +41,43 @@ class AddNoteFragment : Fragment() {
 
             _binding!!.editTextNote.setText(bundle.getString("note"))
             _binding!!.editTextTitle.setText(bundle.getString("title"))
+            val fromWhere= bundle.getString("where")
+            val noteId= bundle.getInt("id")
+
+
+            when(fromWhere){
+
+                "HomeFragment" -> _binding!!.fabSave.setOnClickListener {
+
+                    noteDao.insert(
+                        Note(
+                            0,
+                            noteTitle = _binding!!.editTextTitle.text.toString(),
+                            noteDescription = _binding!!.editTextNote.text.toString()
+                        )
+                    )
+
+                    val action= AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
+                    view.findNavController().navigate(action)
+                }
+
+                "Adapter" -> _binding!!.fabSave.setOnClickListener {
+                    noteDao.update(
+                        Note(
+                            noteId,
+                            noteTitle = _binding!!.editTextTitle.text.toString(),
+                            noteDescription = _binding!!.editTextNote.text.toString()
+                        )
+                    )
+
+                    val action= AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
+                    view.findNavController().navigate(action)
+                }
+
+
+            }
 
         }
-
-
-
-        _binding!!.fabSave.setOnClickListener {
-
-            noteDao.insert(
-                Note(
-                    0,
-                    noteTitle = _binding!!.editTextTitle.text.toString(),
-                    noteDescription = _binding!!.editTextNote.text.toString()
-                )
-            )
-
-            val action= AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
-            view.findNavController().navigate(action)
-        }
-
-
-//        setFragmentResultListener("fromWhere"){requestKey, bundle ->
-//            val adapter= bundle.getString("where")
-//            val noteId= bundle.getInt("id")
-//
-//            when(adapter){
-//                "HomeFragment" -> noteDao.insert(
-//                    Note(
-//                        0,
-//                        noteTitle = _binding!!.editTextTitle.text.toString(),
-//                        noteDescription = _binding!!.editTextNote.text.toString()
-//                    )
-//                )
-//
-//                "Adapter" -> noteDao.update(
-//                    Note(
-//                        noteId,
-//                        noteTitle =  _binding!!.editTextTitle.text.toString(),
-//                        noteDescription = _binding!!.editTextNote.text.toString()
-//                    )
-//                )
-//
-//
-//            }
-//        }
-
 
 
         return view

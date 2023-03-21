@@ -35,15 +35,16 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
                 bundleOf(
                     "note" to noteArrayList[position].noteDescription,
                     "title" to noteArrayList[position].noteTitle,
-                    "id" to noteArrayList[position].noteId
-                )
-            )
-
-            holder.itemView.findFragment<HomeFragment>().setFragmentResult("fromWhere",
-                bundleOf(
+                    "id" to noteArrayList[position].noteId,
                     "where" to "Adapter"
                 )
             )
+
+//            holder.itemView.findFragment<HomeFragment>().setFragmentResult("fromWhere",
+//                bundleOf(
+//                    "where" to "Adapter"
+//                )
+//            )
 
             val action= HomeFragmentDirections.actionHomeFragmentToAddNoteFragment()
             holder.itemView.findNavController().navigate(action)
