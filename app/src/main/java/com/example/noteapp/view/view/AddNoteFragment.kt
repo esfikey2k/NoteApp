@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.findNavController
 import com.example.noteapp.databinding.FragmentAddNoteBinding
 import com.example.noteapp.view.adapter.RecyclerViewAdapter
@@ -36,7 +37,17 @@ class AddNoteFragment : Fragment() {
         val noteDb = NoteDB.getInstance(requireContext())
         noteDao= noteDb.noteDao
 
+        setFragmentResultListener("noteInformation"){requestKey, bundle ->
+
+            _binding!!.editTextNote.setText(bundle.getString("note"))
+            _binding!!.editTextTitle.setText(bundle.getString("title"))
+
+        }
+
+
+
         _binding!!.fabSave.setOnClickListener {
+
             noteDao.insert(
                 Note(
                     0,
@@ -47,8 +58,36 @@ class AddNoteFragment : Fragment() {
 
             val action= AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
             view.findNavController().navigate(action)
-
         }
+
+
+//        setFragmentResultListener("fromWhere"){requestKey, bundle ->
+//            val adapter= bundle.getString("where")
+//            val noteId= bundle.getInt("id")
+//
+//            when(adapter){
+//                "HomeFragment" -> noteDao.insert(
+//                    Note(
+//                        0,
+//                        noteTitle = _binding!!.editTextTitle.text.toString(),
+//                        noteDescription = _binding!!.editTextNote.text.toString()
+//                    )
+//                )
+//
+//                "Adapter" -> noteDao.update(
+//                    Note(
+//                        noteId,
+//                        noteTitle =  _binding!!.editTextTitle.text.toString(),
+//                        noteDescription = _binding!!.editTextNote.text.toString()
+//                    )
+//                )
+//
+//
+//            }
+//        }
+
+
+
         return view
     }
 
