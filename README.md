@@ -11,5 +11,7 @@ Uygulama açıldıktan sonra sağ alttaki + butonuna basarak not eklenir. Eklene
 ## Kullanılan teknoloji ve kütüphanler
   - Kotlin
   - Fragment
+  - Navigation
+  - RecyclerView
   - ViewBinding
   - Room
