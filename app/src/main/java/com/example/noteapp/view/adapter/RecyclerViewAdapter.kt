@@ -33,6 +33,7 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.textViewNote.text= noteArrayList[position].noteDescription
         holder.binding.textViewTitle.text= noteArrayList[position].noteTitle
+        holder.binding.textViewDate.text= noteArrayList[position].noteDate
 
         holder.itemView.setOnClickListener {
 
@@ -60,15 +61,28 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
 
                 if (item.itemId == R.id.process_delete){
+
+//                    holder.itemView.findFragment<HomeFragment>().setFragmentResult("noteInformation",
+//                        bundleOf(
+//                            "note" to noteArrayList[position].noteDescription,
+//                            "title" to noteArrayList[position].noteTitle,
+//                            "id" to noteArrayList[position].noteId,
+//                            "where" to "Adapter"
+//                        )
+//                    )
+
                     noteDao.delete(
                         Note(
                             noteArrayList[position].noteId,
                             noteDescription = noteArrayList[position].noteDescription,
-                            noteTitle = noteArrayList[position].noteTitle
+                            noteTitle = noteArrayList[position].noteTitle,
+                            noteDate = noteArrayList[position].noteDate
                         )
                     )
                     noteArrayList.removeAt(holder.adapterPosition)
+
                     notifyDataSetChanged()
+
                 }
                 true
             })

@@ -9,7 +9,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.example.noteapp.databinding.FragmentHomeBinding
 import com.example.noteapp.view.adapter.RecyclerViewAdapter
 import com.example.noteapp.view.room.Note

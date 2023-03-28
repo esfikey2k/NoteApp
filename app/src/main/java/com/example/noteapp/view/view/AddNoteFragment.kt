@@ -1,17 +1,20 @@
 package com.example.noteapp.view.view
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.findNavController
 import com.example.noteapp.databinding.FragmentAddNoteBinding
-import com.example.noteapp.view.adapter.RecyclerViewAdapter
 import com.example.noteapp.view.room.Note
 import com.example.noteapp.view.room.NoteDAO
 import com.example.noteapp.view.room.NoteDB
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class AddNoteFragment : Fragment() {
@@ -26,6 +29,7 @@ class AddNoteFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +48,11 @@ class AddNoteFragment : Fragment() {
             val fromWhere= bundle.getString("where")
             val noteId= bundle.getInt("id")
 
+            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+
+            val current = LocalDateTime.now().format(formatter)
+
+            println("current date $current")
 
             when(fromWhere){
 
@@ -53,7 +62,8 @@ class AddNoteFragment : Fragment() {
                         Note(
                             0,
                             noteTitle = _binding!!.editTextTitle.text.toString(),
-                            noteDescription = _binding!!.editTextNote.text.toString()
+                            noteDescription = _binding!!.editTextNote.text.toString(),
+                            current.toString()
                         )
                     )
 
@@ -66,7 +76,8 @@ class AddNoteFragment : Fragment() {
                         Note(
                             noteId,
                             noteTitle = _binding!!.editTextTitle.text.toString(),
-                            noteDescription = _binding!!.editTextNote.text.toString()
+                            noteDescription = _binding!!.editTextNote.text.toString(),
+                            current.toString()
                         )
                     )
 
