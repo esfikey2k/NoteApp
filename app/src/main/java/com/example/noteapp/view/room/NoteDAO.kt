@@ -21,4 +21,14 @@ interface NoteDAO {
     @Update
     fun update(note: Note)
 
+    @Query("SELECT * FROM DELETED_NOTE")
+    fun getAllDeleted(): List<DeletedNote>
+    @Insert
+    fun deletedInsert(note: DeletedNote)
+
+    @Delete
+    fun deletedDelete(note: DeletedNote)
+
+
+
 }

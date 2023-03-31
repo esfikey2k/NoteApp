@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.R
 import com.example.noteapp.databinding.RecyclerviewRowBinding
+import com.example.noteapp.view.room.DeletedNote
 import com.example.noteapp.view.room.Note
 import com.example.noteapp.view.room.NoteDAO
 import com.example.noteapp.view.room.NoteDB
@@ -61,15 +62,17 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
 
                 if (item.itemId == R.id.process_delete){
+                    println("q")
+                    println(noteArrayList[position].noteDate)
+                    println("q")
 
-//                    holder.itemView.findFragment<HomeFragment>().setFragmentResult("noteInformation",
-//                        bundleOf(
-//                            "note" to noteArrayList[position].noteDescription,
-//                            "title" to noteArrayList[position].noteTitle,
-//                            "id" to noteArrayList[position].noteId,
-//                            "where" to "Adapter"
-//                        )
-//                    )
+                    noteDao.deletedInsert(DeletedNote(
+                        deletedNoteId = noteArrayList[position].noteId,
+                        deletedNoteTitle = noteArrayList[position].noteTitle,
+                        deletedNoteDescription = noteArrayList[position].noteDescription,
+                        deletedNoteDate = noteArrayList[position].noteDate
+                    ))
+
 
                     noteDao.delete(
                         Note(
