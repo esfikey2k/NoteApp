@@ -62,9 +62,6 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
 
                 if (item.itemId == R.id.process_delete){
-                    println("q")
-                    println(noteArrayList[position].noteDate)
-                    println("q")
 
                     noteDao.deletedInsert(DeletedNote(
                         deletedNoteId = noteArrayList[position].noteId,
@@ -72,7 +69,6 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
                         deletedNoteDescription = noteArrayList[position].noteDescription,
                         deletedNoteDate = noteArrayList[position].noteDate
                     ))
-
 
                     noteDao.delete(
                         Note(
@@ -83,7 +79,6 @@ class RecyclerViewAdapter(val noteArrayList: ArrayList<Note>): RecyclerView.Adap
                         )
                     )
                     noteArrayList.removeAt(holder.adapterPosition)
-
                     notifyDataSetChanged()
 
                 }

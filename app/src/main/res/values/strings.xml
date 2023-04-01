@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">NoteApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_text">Ekle</string>
-    <string name="home_text">Anasayfa</string>
+    <string name="home_text">Notlarım</string>
     <string name="garbage_text">Çöp Kutusu</string>
     <string name="title_text">Başlık</string>
     <string name="type_something_text">Bir şey yaz...</string>
@@ -11,4 +10,7 @@
     <string name="note_text">Not</string>
     <string name="delete_text">Sil</string>
     <string name="date_text">Tarih</string>
+    <string name="warning_text">Bu notu geri yüklemek istediğinize emin misiniz?</string>
+    <string name="yes_text">Evet</string>
+    <string name="no_text">Hayır</string>
 </resources>
